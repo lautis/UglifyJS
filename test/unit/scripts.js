@@ -38,6 +38,9 @@ function getTester(script) {
 		var expected = fs.readFileSync(expectedPath, 'utf-8');
 		test.equal(outputCompress, expected.replace(/(\r?\n)+$/, ""));
 
+		// Check that compressed output can be parsed (i.e. it's valid)
+		jsp.parse(outputCompress);
+
 		test.done();
 	};
 };
